@@ -155,7 +155,7 @@
 			</Rule>
 			<!--MITRE ATT&CK TECHNIQUE: Drive-by Compromise-->
 			<Rule name="Attack=T1189,Technique=Drive-by Compromise,Tactic=Initial Access,DS=Process: Process Creation,Level=4,Alert=Browser Exploitation Detected,Risk=100" groupRelation="and">
-				<ParentImage condition="contains any">iexplore.exe;chrome.exe;firefox.exe;browser_broker.exe;vivaldi.exe;microsoftedge.exe;microsoftedgecp.exe;brave.exe;vivaldi.exe</ParentImage>
+				<ParentImage condition="contains any">iexplore.exe;chrome.exe;firefox.exe;browser_broker.exe;vivaldi.exe;microsoftedge.exe;microsoftedgecp.exe;msedge.exe;brave.exe;vivaldi.exe</ParentImage>
 				<Image condition="contains any">tracert.exe;csc.exe;cscript.exe;wscript.exe;cmd.exe;powershell.exe;bash.exe;scrcons.exe;schtasks.exe;hh.exe;regsvr32.exe;regsvcs.exe;sh.exe;wmic.exe;mshta.exe;rundll32.exe;msiexec.exe;forfiles.exe;scriptrunner.exe;mftrace.exe;AppVLP.exe;svchost.exe;MicroScMgmt.exe;FLTLDR.exe;wmic.exe;Microsoft.Workflow.Compiler.exe;atbroker.exe;bginfo.exe;certutil.exe;csi.exe;dnx.exe;cdb.exe;bitsadmin.exe;forfiles.exe;fsi.exe;ftp.exe;hostname.exe;gpresult.exe;ipconfig.exe;nbtstat.exe;ping.exe;pwsh.exe;qprocess.exe;quser.exe;qwinsta.exe;reg.exe;svchost.exe;installutil.exe;pwsh.exe;msxsl.exe;ieexec.exe;msdt.exe;verclsid.exe</Image>
 				<ParentCommandLine condition="excludes any">apt-config</ParentCommandLine>
 				<CommandLine condition="excludes">SentinelBrowserNativeHost.exe</CommandLine>
@@ -457,6 +457,7 @@
 				<Image condition="excludes">browser_broker.exe</Image>
 				<Image condition="excludes">chrome.exe</Image>
 				<Image condition="excludes">edge.exe</Image>
+        <Image condition="excludes">msedge.exe</Image>
 				<Image condition="excludes">firefox.exe</Image>
 				<Image condition="excludes">iexplore.exe</Image>
 				<Image condition="excludes">vivaldi.exe</Image>
@@ -3602,7 +3603,7 @@
 				<DestinationIp condition="excludes">127.0.0.1</DestinationIp>
 			</Rule>
 			<Rule name="Attack=None,Technique=None,Tactic=None,DS=Network Traffic: Network Connection Creation,Level=0,Desc=Browsers accessing non-standard ports" groupRelation="and">
-				<Image condition="contains any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;browser_broker.exe;\vivaldi.exe;\brave.exe;\opera.exe</Image>
+				<Image condition="contains any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;\msedge.exe;browser_broker.exe;\vivaldi.exe;\brave.exe;\opera.exe</Image>
 				<DestinationPort condition="is not">80</DestinationPort>
 				<DestinationPort condition="is not">443</DestinationPort>
 				<Initiated>true</Initiated>
@@ -3764,22 +3765,22 @@
 				<SourcePort condition="is">443</SourcePort>
 			</Rule>
 			<Rule name="Attack=None,Technique=None,Tactic=None,DS=Network Traffic: Network Connection Creation,Level=0,Desc=Web Browser HTTP Connections" groupRelation="and">
-				<Image condition="contains any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;browser_broker.exe;\vivaldi.exe;\brave.exe;\opera.exe</Image>
+				<Image condition="contains any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;\msedge.exe;browser_broker.exe;\vivaldi.exe;\brave.exe;\opera.exe</Image>
 				<DestinationPort condition="is">80</DestinationPort>
 				<Initiated>true</Initiated>
 			</Rule>
 			<Rule name="Attack=None,Technique=None,Tactic=None,DS=Network Traffic: Network Connection Creation,Level=0,Desc=Non-Browsers Accessing HTTPS" groupRelation="and">
-				<Image condition="excludes any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;browser_broker.exe;\vivaldi.exe;\brave.exe;C:\Program Files\Cavelo\Cavelo Agent\cavelo_windows_amd64.exe;C:\PROGRA~2\BEANYW~1\GETSUP~1\TCIntegratorCommHelper.exe;C:\Program Files (x86)\N-able Technologies\Windows Software Probe\bin\wsp.exe;C:\Program Files (x86)\BeAnywhere Support Express\GetSupportService_N-Central\BASupSrvc.exe</Image>
+				<Image condition="excludes any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;\msedge.exe;browser_broker.exe;\vivaldi.exe;\brave.exe;C:\Program Files\Cavelo\Cavelo Agent\cavelo_windows_amd64.exe;C:\PROGRA~2\BEANYW~1\GETSUP~1\TCIntegratorCommHelper.exe;C:\Program Files (x86)\N-able Technologies\Windows Software Probe\bin\wsp.exe;C:\Program Files (x86)\BeAnywhere Support Express\GetSupportService_N-Central\BASupSrvc.exe</Image>
 				<DestinationPortName condition="is">https</DestinationPortName>
 				<Initiated>true</Initiated>
 			</Rule>
 			<Rule name="Attack=None,Technique=None,Tactic=None,DS=Network Traffic: Network Connection Creation,Level=0,Desc=Non-Browsers Accessing HTTP" groupRelation="and">
-				<Image condition="excludes any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;browser_broker.exe;\vivaldi.exe;\brave.exe;C:\Program Files (x86)\N-able Technologies\Windows Software Probe\bin\wsp.exe</Image>
+				<Image condition="excludes any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;\msedge.exe;browser_broker.exe;\vivaldi.exe;\brave.exe;C:\Program Files (x86)\N-able Technologies\Windows Software Probe\bin\wsp.exe</Image>
 				<DestinationPortName condition="is">http</DestinationPortName>
 				<Initiated>true</Initiated>
 			</Rule>
 			<Rule name="Attack=None,Technique=None,Tactic=None,DS=Network Traffic: Network Connection Creation,Level=0,Desc=Web Browser HTTPS Connections" groupRelation="and">
-				<Image condition="contains any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;browser_broker.exe;\vivaldi.exe;\brave.exe;\opera.exe</Image>
+				<Image condition="contains any">\iexplore.exe;\chrome.exe;\firefox.exe;\MicrosoftEdge;\msedge.exe;browser_broker.exe;\vivaldi.exe;\brave.exe;\opera.exe</Image>
 				<DestinationPort condition="is">443</DestinationPort>
 				<Initiated>true</Initiated>
 			</Rule>
@@ -4861,7 +4862,7 @@
 				<SourceImage condition="contains any">msiexec.exe</SourceImage>
 			</Rule>
 			<Rule name="Attack=T1055,Technique=Process Injection,Tactic=Defense Evasion,DS=Process: Process Modification,Level=0,Desc=Remote Thread Injection Targetting Web Browser,Risk=70" groupRelation="and">
-				<TargetImage condition="contains any">chrome.exe;firefox.exe;edge.exe;browser_broker.exe;iexplore.exe;opera.exe</TargetImage>
+				<TargetImage condition="contains any">chrome.exe;firefox.exe;edge.exe;msedge.exe;browser_broker.exe;iexplore.exe;opera.exe</TargetImage>
 			</Rule>
 			<Rule name="Attack=T1003,Tactic=Credential Access,Technique=OS Credential Dumping,DS=Process: Process Modification,Level=0,Desc=LSASS Credential dumping,Risk=70" groupRelation="and">
 				<StartAddress condition="is">0x001A0000</StartAddress>
