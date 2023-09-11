@@ -457,7 +457,7 @@
 				<Image condition="excludes">browser_broker.exe</Image>
 				<Image condition="excludes">chrome.exe</Image>
 				<Image condition="excludes">edge.exe</Image>
-        <Image condition="excludes">msedge.exe</Image>
+        			<Image condition="excludes">msedge.exe</Image>
 				<Image condition="excludes">firefox.exe</Image>
 				<Image condition="excludes">iexplore.exe</Image>
 				<Image condition="excludes">vivaldi.exe</Image>
